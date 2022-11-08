@@ -14,4 +14,24 @@ gen_DCANprep_rsfMRI_fsLR32k_filelist(data_dir, subj_ls, censor_mat, fsLR_file_ls
 
 `fsLR_file_ls`: fullpath to the output file list.
 
-## Step 2.
+## Step 2. compute RSFC homogeneity
+
+On a high-performance computer with HTCondor, submit the following job:
+
+```
+condor_submit rsfc_homo_schaefer.submit
+```
+
+## Step 3. plot the homogeneity of African/white Americans
+
+```matlab
+violin_rsfc_homo_schaefer(homo_mat, grp1_name, grp2_name, out_png)
+```
+
+`homo_mat`: the output of step 2. E.g. `/data/project/AfrAm_FuncParc/data/homogeneity/Schaefer/ABCD/rsfc_homo_400_AAWA_rand300.mat`.
+
+`grp1_name`: name of the first group for plotting. It should be consistent with the ordering in `homo_mat`.
+
+`grp2_name`: name of the second group for plotting. It should be consistent with the ordering in `homo_mat`.
+
+`out_png`: output figure name, e.g. `/data/project/AfrAm_FuncParc/data/homogeneity/Schaefer/ABCD/rsfc_homo_400_AAWA_rand300.png`.
