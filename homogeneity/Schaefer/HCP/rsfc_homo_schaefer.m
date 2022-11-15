@@ -3,8 +3,7 @@ function homo_out = rsfc_homo_schaefer(scale, subj_ls, HCP_dir, outname)
 % homo_out = rsfc_homo_schaefer(scale, subj_ls, outname)
 % 
 % Calculate resting-state functional connectivity homogeneity of the Schaefer 
-% parcellation, for two lists of African Americans and white Americans respectively, 
-% from the HCP dataset.
+% parcellation using the HCP dataset.
 % Please install the CBIG github repo correctly to run this script:
 % https://github.com/ThomasYeoLab/CBIG
 %
