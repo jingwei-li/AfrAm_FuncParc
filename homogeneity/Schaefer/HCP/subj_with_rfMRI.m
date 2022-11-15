@@ -32,7 +32,17 @@ for i = 1:length(subjects)
         cd('Results')
         [~, msg] = system('find . -maxdepth 1 -type d -name "rfMRI*" -print0 | sort -z | xargs -r0');
         if(~isempty(msg))
-            subj_rf = [subj_rf {s}];
+            flag = 0; runs = strsplit(msg);
+            for j = 1:length(runs)
+                if(~isempty(runs{j}))
+                    if(any(strcmp({'rfMRI_REST1_LR', 'rfMRI_REST1_RL', 'rfMRI_REST2_LR', 'rfMRI_REST2_RL'}, basename(runs{j}))))
+                        flag = 1;
+                    end
+                end
+            end
+            if(flag == 1)
+                subj_rf = [subj_rf {s}];
+            end
         end
     end
     cd(fullfile(HCP_dir, 'HCP1200'))
