@@ -10,7 +10,7 @@ subj_with_rfMRI(GSP_dir, out_dir)
 
 `out_dir`: full path of output directory, e.g. `/data/project/AfrAm_FuncParc/code/AfrAm_FuncParc/homogeneity/Schaefer/GSP/lists`.
 
-## Step 2. randomly select the same number of African Americans and white Americans
+## Step 2. randomly select the same number of white Americans and others
 
 ```
 python3 rand_subject_equalOtherWA.py --subj_ls $subj_ls --outdir $outdir -N 500
@@ -50,7 +50,7 @@ On a high-performance computer with HTCondor, use this script to submit jobs:
 ./gen_submit_rsfc_homo_schaefer_surf.sh | condor_submit
 ```
 
-## Step 5. plot the homogeneity of African/white Americans
+## Step 5. plot the homogeneity of white Americans vs. others
 
 ```matlab
 cd ../HCP
