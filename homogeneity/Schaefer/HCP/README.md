@@ -16,7 +16,7 @@ subj_with_rfMRI(HCP_dir, out_dir)
 python3 rand_subject_equalAAWA.py --subj_ls $subj_ls --outdir $outdir -N 160
 ```
 
-`$subj_ls`: output from step 2, e.g. `/data/project/AfrAm_FuncParc/code/AfrAm_FuncParc/homogeneity/Schaefer/HCP/lists/subject_rfMRI.txt`.
+`$subj_ls`: output from step 1, e.g. `/data/project/AfrAm_FuncParc/code/AfrAm_FuncParc/homogeneity/Schaefer/HCP/lists/subject_rfMRI.txt`.
 
 `outdir`: output directory, e.g. `/data/project/AfrAm_FuncParc/code/AfrAm_FuncParc/homogeneity/Schaefer/HCP/lists`.
 
