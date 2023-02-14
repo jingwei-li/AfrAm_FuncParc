@@ -1,0 +1,17 @@
+universe              = vanilla
+getenv                = True
+request_cpus          = 1
+request_memory        = 5G
+
+# Execution
+initialdir            = /data/project/parcellate_ABCD_preprocessed/scripts/Parcellate_ABCD_DCANpreproc
+executable            = /usr/bin/matlab95
+transfer_executable   = False
+
+# Job
+arguments   = -singleCompThread -r extract_rest_timeseries_Schaefer(400,'/data/project/AfrAm_FuncParc/code/AfrAm_FuncParc/homogeneity/Schaefer/ABCD/lists/matched_6bigsites/raw_conf_matched_subj_100_site20_White','/data/project/AfrAm_FuncParc/data/RSFC/Schaefer/ABCD/site_effects/parcellated_timeseries')
+log         = /data/project/AfrAm_FuncParc/code/logs/RSFC/extract_ts_Schaefer_$(Cluster).$(Process).log
+output      = /data/project/AfrAm_FuncParc/code/logs/RSFC/extract_ts_Schaefer_$(Cluster).$(Process).out
+error       = /data/project/AfrAm_FuncParc/code/logs/RSFC/extract_ts_Schaefer_$(Cluster).$(Process).err
+requirements = Machine == "cpu10.htc.inm7.de"
+Queue

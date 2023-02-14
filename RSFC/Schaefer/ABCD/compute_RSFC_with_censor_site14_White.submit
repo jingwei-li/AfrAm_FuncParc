@@ -1,0 +1,18 @@
+# The environment
+universe              = vanilla
+getenv                = True
+request_cpus          = 1
+request_memory        = 5G
+
+# Execution
+initialdir            = /data/project/AfrAm_FuncParc/code/AfrAm_FuncParc/RSFC/Schaefer/ABCD
+executable            = /usr/bin/matlab95
+transfer_executable   = False
+
+# Job
+arguments   = -singleCompThread -r compute_RSFC_with_censor(4,'/data/project/AfrAm_FuncParc/code/AfrAm_FuncParc/homogeneity/Schaefer/ABCD/lists/matched_6bigsites/raw_conf_matched_subj_100_site14_White','/data/project/AfrAm_FuncParc/data/RSFC/Schaefer/ABCD/site_effects/parcellated_timeseries','/data/project/AfrAm_FuncParc/code/AfrAm_FuncParc/homogeneity/Schaefer/ABCD/lists/backup_subj_ls_on_20230210/subjects_rs_censor.mat')
+log         = /data/project/AfrAm_FuncParc/code/logs/RSFC/compute_RSFC_with_censor_$(Cluster).$(Process).log
+output      = /data/project/AfrAm_FuncParc/code/logs/RSFC/compute_RSFC_with_censor_$(Cluster).$(Process).out
+error       = /data/project/AfrAm_FuncParc/code/logs/RSFC/compute_RSFC_with_censor_$(Cluster).$(Process).err
+requirements = Machine == "cpu10.htc.inm7.de"
+Queue
