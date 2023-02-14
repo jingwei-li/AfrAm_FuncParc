@@ -1,0 +1,6 @@
+/data/project/AfrAm_FuncParc/code/AfrAm_FuncParc/homogeneity/Schaefer/ABCD/lists/matched_6bigsites/raw_conf_matched_subj_100_site02_White
+/data/project/AfrAm_FuncParc/code/AfrAm_FuncParc/homogeneity/Schaefer/ABCD/lists/matched_6bigsites/raw_conf_matched_subj_100_site04_White
+/data/project/AfrAm_FuncParc/code/AfrAm_FuncParc/homogeneity/Schaefer/ABCD/lists/matched_6bigsites/raw_conf_matched_subj_100_site06_White
+/data/project/AfrAm_FuncParc/code/AfrAm_FuncParc/homogeneity/Schaefer/ABCD/lists/matched_6bigsites/raw_conf_matched_subj_100_site14_White
+/data/project/AfrAm_FuncParc/code/AfrAm_FuncParc/homogeneity/Schaefer/ABCD/lists/matched_6bigsites/raw_conf_matched_subj_100_site16_White
+/data/project/AfrAm_FuncParc/code/AfrAm_FuncParc/homogeneity/Schaefer/ABCD/lists/matched_6bigsites/raw_conf_matched_subj_100_site20_White

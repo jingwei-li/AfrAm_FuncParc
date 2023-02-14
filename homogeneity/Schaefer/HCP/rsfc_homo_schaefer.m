@@ -55,9 +55,9 @@ for i = 1:length(subjects)
     fprintf('Subject: %s\n', s);
     count = 0;
 
-    system(sprintf('datalad get -n %s', s));
+    %system(sprintf('datalad get -n %s', s));
     cd(fullfile(s, 'MNINonLinear'))
-    system('datalad get -n .');
+    %system('datalad get -n .');
     if(~exist('Results', 'dir'))
         error('\t This subject does not have any resting-state fMRI data. Check your subject list.\n')
     end
@@ -78,7 +78,9 @@ for i = 1:length(subjects)
             %% read current run timeseries
             cd(runs{j})
             fname = [runs{j} '_Atlas_MSMAll_hp2000_clean.dtseries.nii'];
-            system(sprintf('datalad get %s', fname));
+            %if(~exist(fname, 'file'))
+                system(sprintf('datalad get %s', fname));
+            %end
             [~, vol, ~] = read_fmri(fname);
             vol((2*N_ver+1):end,:)=[];
             all_nan=find(isnan(mean(vol,2))==1); % nan vertices
@@ -123,7 +125,7 @@ for i = 1:length(subjects)
     homo_out(i,1) = homo_out(i,1) / count;
 
     cd(fullfile(HCP_dir, 'HCP1200'))
-    system(sprintf('datalad uninstall %s --recursive', s));
+    %system(sprintf('datalad uninstall %s --recursive', s));
 end
 
 outdir = fileparts(outname);

@@ -28,10 +28,11 @@ addpath(fullfile(repo_path, 'external', 'CBIG'))
 start_dir = pwd;
 ses = 'ses-baselineYear1Arm1';
 
-if(~isempty(data_dir))
-    data_dir = fullfile(proj_dir, 'data', 'datasets', 'inm7-superds', ...
+if(isempty(data_dir))
+    data_dir = fullfile(proj_dir, 'data', 'datasets', 'inm7_superds', ...
         'original', 'abcd', 'derivatives', 'abcd-hcp-pipeline');
 end
+fprintf('data_dir = %s\n', data_dir)
 
 soi = CBIG_text2cell(subj_ls);
 load(censor_mat)

@@ -23,9 +23,16 @@ end
 if(~exist(fullfile(MNI_dir, 'surf')));
     mkdir(fullfile(MNI_dir, 'surf'));
 end
-lh_fname = fullfile(MNI_dir, 'surf', ['lh.' SID '_ses01_postproc.mat']);
-rh_fname = fullfile(MNI_dir, 'surf', ['rh.' SID '_ses01_postproc.mat']);
-save(lh_fname, 'lh_ts', '-v7.3')
-save(rh_fname, 'rh_ts', '-v7.3')
+%lh_fname = fullfile(MNI_dir, 'surf', ['lh.' SID '_ses01_postproc.mat']);
+%rh_fname = fullfile(MNI_dir, 'surf', ['rh.' SID '_ses01_postproc.mat']);
+%save(lh_fname, 'lh_ts', '-v7.3')
+%save(rh_fname, 'rh_ts', '-v7.3')
+
+lh_fname = fullfile(MNI_dir, 'surf', ['lh.' SID '_ses01_postproc.nii.gz']);
+mri.vol = reshape(lh_ts', 6827, 3, 2, size(lh_ts,1));
+MRIwrite(mri, lh_fname)
+rh_fname = fullfile(MNI_dir, 'surf', ['rh.' SID '_ses01_postproc.nii.gz']);
+mri.vol = reshape(rh_ts', 6827, 3, 2, size(rh_ts,1));
+MRIwrite(mri, rh_fname)
     
 end

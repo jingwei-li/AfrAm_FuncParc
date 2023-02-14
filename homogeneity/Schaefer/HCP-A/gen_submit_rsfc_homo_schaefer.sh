@@ -27,8 +27,10 @@ outdir=$proj_dir/data/homogeneity/Schaefer/HCP-A
 mkdir -p $outdir
 # loop through lists
 for race in AA WA; do
-    subj_ls=$ls_dir/subject_rfMRI_rand100${race}.txt
-    outname=$outdir/rsfc_homo_400_rand100${race}.mat
+    #subj_ls=$ls_dir/subject_rfMRI_rand100${race}.txt
+    subj_ls=$ls_dir/subject_rfMRI_matched${race}_ub0.2.txt
+    #outname=$outdir/rsfc_homo_400_rand100${race}.mat
+    outname=$outdir/rsfc_homo_400_matched${race}_ub0.2.mat
     printf "arguments = -singleCompThread -r rsfc_homo_schaefer(400,'$subj_ls','$HCPA_dir','$outname')\n"
     printf "log       = ${LOGS_DIR}/\$(Cluster).\$(Process).${start}.log\n"
     printf "output    = ${LOGS_DIR}/\$(Cluster).\$(Process).${start}.out\n"

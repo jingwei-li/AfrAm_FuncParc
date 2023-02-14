@@ -16,22 +16,20 @@ getenv         = True
 request_cpus   = ${CPUS}
 request_memory = ${RAM}
 # Execution
-initial_dir    = $proj_dir/code/AfrAm_FuncParc/homogeneity/Schaefer/HCP
+initial_dir    = $proj_dir/code/AfrAm_FuncParc/homogeneity/Schaefer/GSP
 executable     = /usr/bin/matlab95
 transfer_executable   = False
 \n"
 
-ls_dir=$proj_dir/code/AfrAm_FuncParc/homogeneity/Schaefer/HCP/lists
-HCP_dir=$proj_dir/data/datasets/human-connectome-project-openaccess
-outdir=$proj_dir/data/homogeneity/Schaefer/HCP
+ls_dir=$proj_dir/code/AfrAm_FuncParc/homogeneity/Schaefer/GSP/lists
+data_dir=$proj_dir/data/datasets/GSP_postproc/reg_mt_gs_wm_csf
+outdir=$proj_dir/data/homogeneity/Schaefer/GSP
 mkdir -p $outdir
 # loop through lists
-for race in AA WA; do
-    #subj_ls=$ls_dir/subject_rfMRI_rand160${race}.txt
-    subj_ls=$ls_dir/subject_rfMRI_matched${race}_ub0.2.txt
-    #outname=$outdir/rsfc_homo_400_rand160${race}.mat
-    outname=$outdir/rsfc_homo_400_matched${race}_ub0.2.mat
-    printf "arguments = -singleCompThread -r rsfc_homo_schaefer(400,'$subj_ls','$HCP_dir','$outname')\n"
+for race in Other WA; do
+    subj_ls=$ls_dir/subject_rfMRI_rand500${race}.txt
+    outname=$outdir/rsfc_homo_400_rand500${race}_postproc.mat
+    printf "arguments = -singleCompThread -r rsfc_homo_schaefer(400,'$subj_ls','$data_dir','$outname')\n"
     printf "log       = ${LOGS_DIR}/\$(Cluster).\$(Process).${start}.log\n"
     printf "output    = ${LOGS_DIR}/\$(Cluster).\$(Process).${start}.out\n"
     printf "error     = ${LOGS_DIR}/\$(Cluster).\$(Process).${start}.err\n"

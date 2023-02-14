@@ -1,0 +1,17 @@
+# The environment
+universe              = vanilla
+getenv                = True
+request_cpus          = 1
+request_memory        = 5G
+
+# Execution
+initialdir            = /data/project/AfrAm_FuncParc/code/AfrAm_FuncParc/homogeneity/Schaefer/ABCD
+executable            = /usr/bin/matlab95
+transfer_executable   = False
+
+arguments   = -singleCompThread -r rsfc_homo_schaefer(400,'/data/project/AfrAm_FuncParc/code/AfrAm_FuncParc/homogeneity/Schaefer/ABCD/lists/fsLR_matchedAA_ub1.0.txt','/data/project/AfrAm_FuncParc/code/AfrAm_FuncParc/homogeneity/Schaefer/ABCD/lists/fsLR_matchedWA_ub1.0.txt','/data/project/AfrAm_FuncParc/data/homogeneity/Schaefer/ABCD/rsfc_homo_400_matchedAAWA_ub1.0.mat')
+log         = /data/project/AfrAm_FuncParc/code/logs/homogeneity/rsfc_homo_schaefer_$(Cluster).$(Process).log
+output      = /data/project/AfrAm_FuncParc/code/logs/homogeneity/rsfc_homo_schaefer_$(Cluster).$(Process).out
+error       = /data/project/AfrAm_FuncParc/code/logs/homogeneity/rsfc_homo_schaefer_$(Cluster).$(Process).err
+requirements = Machine == "cpu10.htc.inm7.de"
+Queue

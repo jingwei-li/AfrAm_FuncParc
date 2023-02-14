@@ -1,0 +1,6 @@
+site02
+site04
+site06
+site14
+site16
+site20

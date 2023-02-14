@@ -61,30 +61,34 @@ for i = 1:length(subjects)
         end
         labels_size(i,c) = length(index_cluster);
         
+        a_mean = mean(a, 2);
+        a_mean = a_mean - mean(a_mean);
+        a_mean = a_mean ./ sqrt(sum(a_mean.^2, 1));
+
         a = bsxfun(@minus, a, mean(a, 1));  % remove mean timeseries
         a = bsxfun(@times, a, 1./sqrt(sum(a.^2, 1)));  % normalize std of timeseries
-        corr_mat = a' * a;  % correlation across timepoints
+        
+        corr_mat{i, c} = a' * a_mean;  % correlation across timepoints
 
         %% compute homogeneity
-        homo_parc(c,1)=(sum(sum(corr_mat))-size(corr_mat,1)) / ...
-            (size(corr_mat,1) * (size(corr_mat,1)-1));
-        if(size(corr_mat,1)==1||size(corr_mat,1)==0)
-            homo_parc(c,1)=0;
-        end
-        fprintf('homo_parc(%d, 1) = %f \n', c, homo_parc(c,1))
+        %homo_parc(c,1)=(sum(sum(corr_mat))-size(corr_mat,1)) / ...
+        %    (size(corr_mat,1) * (size(corr_mat,1)-1));
+        %if(size(corr_mat,1)==1||size(corr_mat,1)==0)
+        %    homo_parc(c,1)=0;
+        %end
+        %fprintf('homo_parc(%d, 1) = %f \n', c, homo_parc(c,1))
         
-        
+        %system(sprintf('datalad drop %s', fname))
+        cd(data_dir);
     end
-    system(sprintf('datalad drop %s', fname))
-    cd(data_dir);
-    homo_out(i,1) = sum(labels_size(i,:)*homo_parc)/sum(labels_size(i,:));
+    %homo_out(i,1) = sum(labels_size(i,:)*homo_parc)/sum(labels_size(i,:));
 end
 
 outdir = fileparts(outname);
 if(~exist(outdir, 'dir'))
     mkdir(outdir)
 end
-save(outname, 'homo_out', '-v7.3')
+save(outname, 'corr_mat', '-v7.3')
 cd(start_dir)
 rmpath(fullfile(repo_path, 'external', 'CBIG'))
     

@@ -27,11 +27,9 @@ outdir=$proj_dir/data/homogeneity/Schaefer/GSP
 mkdir -p $outdir
 # loop through lists
 for race in Other WA; do
-    #subj_ls=$ls_dir/subject_rfMRI_rand500${race}.txt
-    subj_ls=$ls_dir/subject_rfMRI_matched${race}_ub0.1.txt
-    #outname=$outdir/rsfc_homo_400_rand500${race}.mat
-    outname=$outdir/rsfc_homo_400_matched${race}_ub0.1.mat
-    printf "arguments = -singleCompThread -r rsfc_homo_schaefer(400,'$subj_ls','$data_dir','$outname')\n"
+    subj_ls=$ls_dir/subject_rfMRI_rand500${race}.txt
+    outname=$outdir/vol2parcel_RSFC_400_rand500${race}.mat
+    printf "arguments = -singleCompThread -r rsfc_homo_schaefer_debug(400,'$subj_ls','$data_dir','$outname')\n"
     printf "log       = ${LOGS_DIR}/\$(Cluster).\$(Process).log\n"
     printf "output    = ${LOGS_DIR}/\$(Cluster).\$(Process).out\n"
     printf "error     = ${LOGS_DIR}/\$(Cluster).\$(Process).err\n"

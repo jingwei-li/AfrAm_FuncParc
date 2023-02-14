@@ -28,7 +28,7 @@ mkdir -p $outdir
 # loop through lists
 for race in Other WA; do
     subj_ls=$ls_dir/subject_rfMRI_rand500${race}.txt
-    outname=$outdir/rsfc_homo_400_rand500${race}_surf.mat
+    outname=$outdir/rsfc_homo_400_rand500${race}_postproc_surf.mat
     printf "arguments = -singleCompThread -r rsfc_homo_schaefer_surf(400,'$subj_ls','$data_dir','$outname')\n"
     printf "log       = ${LOGS_DIR}/\$(Cluster).\$(Process).${start}.log\n"
     printf "output    = ${LOGS_DIR}/\$(Cluster).\$(Process).${start}.out\n"
